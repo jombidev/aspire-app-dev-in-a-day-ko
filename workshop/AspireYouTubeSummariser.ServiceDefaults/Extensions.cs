@@ -31,7 +31,8 @@ public static class Extensions
         {
             // Turn on resilience by default
             // http.AddStandardResilienceHandler();
-            http.AddResilienceHandler("custom", builder => {
+            http.AddResilienceHandler("custom", builder =>
+            {
                 // See: https://www.pollydocs.org/strategies/retry.html
                 builder.AddRetry(new HttpRetryStrategyOptions
                 {
@@ -50,9 +51,11 @@ public static class Extensions
                     MinimumThroughput = 3,
                     ShouldHandle = static args =>
                     {
-                        return ValueTask.FromResult(args is 
+                        return ValueTask.FromResult(args is
                         {
-                            Outcome.Result.StatusCode: HttpStatusCode.RequestTimeout or HttpStatusCode.TooManyRequests
+                            Outcome.Result.StatusCode:
+                                HttpStatusCode.RequestTimeout or
+                                    HttpStatusCode.TooManyRequests
                         });
                     }
                 });
