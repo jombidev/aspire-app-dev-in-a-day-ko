@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - master
+
     paths:
       - 'workshop/**/*'
 
@@ -89,3 +90,4 @@ jobs:
           pushd ./workshop
           azd deploy --no-prompt
           popd
+
